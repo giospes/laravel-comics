@@ -25,3 +25,14 @@ Route::get('/', function () {
     return view('home', $data);
 });
 
+Route::get('/comic{id}', function ($id) {
+    $data = [
+        'comics' => include(config_path('comics.php')),
+        'id' => $id,
+        'sections' => [
+            'comics', 'books', 'movies', 'action figures', 'mofos'
+        ],
+    ];
+    return view('show', $data);
+})->name('comic.show');
+
